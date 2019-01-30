@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>canvas 点线动画 | ZMY&#39;s Website</title>
+    <meta name="description" content="ZMY&#39;s Website">
+    <link rel="icon" href="/images/logo.jpeg">
+  <link rel="manifest" href="/images/logo.jpeg">
+  <link rel="apple-touch-icon" href="/images/logo.jpeg">
+    
+    <link rel="preload" href="/assets/css/0.styles.6ba01dbc.css" as="style"><link rel="preload" href="/assets/js/app.42b9ba97.js" as="script"><link rel="preload" href="/assets/js/11.ada11291.js" as="script"><link rel="prefetch" href="/assets/js/10.6bcab56d.js"><link rel="prefetch" href="/assets/js/12.8d727e1b.js"><link rel="prefetch" href="/assets/js/13.2468b28d.js"><link rel="prefetch" href="/assets/js/14.a642536a.js"><link rel="prefetch" href="/assets/js/15.9b6f175f.js"><link rel="prefetch" href="/assets/js/16.e358d100.js"><link rel="prefetch" href="/assets/js/2.14f91ed7.js"><link rel="prefetch" href="/assets/js/3.4c44146a.js"><link rel="prefetch" href="/assets/js/4.dc7041ef.js"><link rel="prefetch" href="/assets/js/5.96ce65d8.js"><link rel="prefetch" href="/assets/js/6.9183c1f3.js"><link rel="prefetch" href="/assets/js/7.48f237c6.js"><link rel="prefetch" href="/assets/js/8.9e176729.js"><link rel="prefetch" href="/assets/js/9.b9fd3a14.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.6ba01dbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">ZMY's Website</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/accumulate/" class="nav-link router-link-active">前端基础</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">算法题库</a></div><div class="nav-item"><a href="/aboutme/" class="nav-link">关于我</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/accumulate/" class="nav-link router-link-active">前端基础</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">算法题库</a></div><div class="nav-item"><a href="/aboutme/" class="nav-link">关于我</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>html</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>css</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/accumulate/css/animation.html" class="sidebar-link">一文读懂 Animation 中的时间函数 steps</a></li><li><a href="/accumulate/css/bfc.html" class="sidebar-link">BFC - 块级格式化上下文</a></li><li><a href="/accumulate/css/dot-lines.html" class="active sidebar-link">canvas 点线动画</a></li><li><a href="/accumulate/css/maodian.html" class="sidebar-link">简单的选项卡切换效果</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>打包配置</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="canvas-点线动画"><a href="#canvas-点线动画" aria-hidden="true" class="header-anchor">#</a> canvas 点线动画</h1> <p>代码地址：<a href="https://github.com/zmy18232766872/demo-room/tree/master/dotline" target="_blank" rel="noopener noreferrer">canvas点线动画<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h5 id="画圆："><a href="#画圆：" aria-hidden="true" class="header-anchor">#</a> 画圆：</h5> <blockquote><p>arc(x, y, r, start, stop)</p></blockquote> <h5 id="画线："><a href="#画线：" aria-hidden="true" class="header-anchor">#</a> 画线：</h5> <blockquote><p>moveTo(x, y) 定义线条开始坐标</p> <p>lineTo(x, y) 定义线条结束坐标</p></blockquote> <h5 id="填充："><a href="#填充：" aria-hidden="true" class="header-anchor">#</a> 填充：</h5> <blockquote><p>fill()</p></blockquote> <h5 id="绘制："><a href="#绘制：" aria-hidden="true" class="header-anchor">#</a> 绘制：</h5> <blockquote><p>stroke()</p></blockquote> <h4 id="_1、画一个点"><a href="#_1、画一个点" aria-hidden="true" class="header-anchor">#</a> 1、画一个点</h4> <h5 id="初始化"><a href="#初始化" aria-hidden="true" class="header-anchor">#</a> 初始化</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;canvas id=&quot;canvas&quot; width=&quot;700&quot; height=&quot;600&quot;&gt;
+  浏览器不支持canvas！
+&lt;/canvas&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h5 id="找到-canvas-元素"><a href="#找到-canvas-元素" aria-hidden="true" class="header-anchor">#</a> 找到 <code>&lt;canvas&gt;</code>元素</h5> <blockquote><p>let canvas = document.getElementById(&quot;canvas&quot;);</p></blockquote> <h5 id="创建-context对象"><a href="#创建-context对象" aria-hidden="true" class="header-anchor">#</a> 创建 <code>context</code>对象</h5> <blockquote><p>let ctx = canvas.getContext(&quot;2d&quot;);</p></blockquote> <h5 id="画圆"><a href="#画圆" aria-hidden="true" class="header-anchor">#</a> 画圆</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 坐标（x, y）、半径、开始角度、结束角度、顺时针（逆时针）
+ctx.arc(70, 80, 30, 0, Math.PI * 2, false);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="_2、画很多点"><a href="#_2、画很多点" aria-hidden="true" class="header-anchor">#</a> 2、画很多点</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>//生成点
+for (let i = 0; i &lt; dotsNum; i ++) {
+  x = Math.random() * canvas.width;
+  y = Math.random() * canvas.height;
+  r = Math.random() * 4; // 随机生成 &lt;4 的半径值
+
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI);
+  ctx.fillStyle = &quot;rgba(0,0,0,.8)&quot;;
+  ctx.fill();
+  ctx.closePath();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h4 id="_3、画两点一线"><a href="#_3、画两点一线" aria-hidden="true" class="header-anchor">#</a> 3、画两点一线</h4> <blockquote><p>确定两个点的坐标 + lineTo 、moveTo</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>for (let i = 0; i &lt; 2; i++) {
+  ctx.beginPath()
+  // 设置原点位置为（100，100），半径为10
+  ctx.arc(100 + i * 150, 100 + i * 250, 10, 0, Math.PI * 2, false)
+
+  // 两个点进行画线
+  ctx.moveTo(100, 100)
+  ctx.lineTo(100 + i * 150, 100 + i * 250)
+
+  // 设置线的宽度，单位是像素
+  ctx.lineWidth = 2
+  ctx.stroke()
+
+  // 实心圆 - 填充颜色,默认是黑色
+  // 实心圆 - 画实心圆
+  ctx.fill()
+  ctx.closePath()
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h4 id="_4、画多点多线"><a href="#_4、画多点多线" aria-hidden="true" class="header-anchor">#</a> 4、画多点多线</h4> <p>当点很多、元素很多的时候再进行画线操作会很繁琐，对于多元素的情况，创建实例对象，把变量存储在实例对象上。</p> <h6 id="定义一个dots函数。"><a href="#定义一个dots函数。" aria-hidden="true" class="header-anchor">#</a> 定义一个Dots函数。</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>var Dots = function () {
+  // 画布
+  this.canvas;
+  this.ctx;
+
+  // 画点
+  this.x;
+  this.y;
+  this.r;
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h6 id="添加一个用于点的生成的初始化方法。"><a href="#添加一个用于点的生成的初始化方法。" aria-hidden="true" class="header-anchor">#</a> 添加一个用于点的生成的初始化方法。</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>Dots.prototype = {
+  // 初始化点的方法
+  init: function (canvas) {
+    this.canvas = canvas;
+    this.ctx = this.canvas.getContext('2d');
+
+    this.x = Math.random() * this.canvas.width;
+    this.y = Math.random() * this.canvas.height;
+    this.r = Math.random() * 4; // 随机生成 &lt;4 的半径值
+
+    this.ctx.beginPath();
+    this.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+    this.ctx.fillStyle = &quot;black&quot;;
+    this.ctx.fill();
+    this.ctx.closePath();
+  }
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h6 id="在点与点之间进行画线，每两个点之间就有一条线，总共有c-n-2-条线。"><a href="#在点与点之间进行画线，每两个点之间就有一条线，总共有c-n-2-条线。" aria-hidden="true" class="header-anchor">#</a> 在点与点之间进行画线，每两个点之间就有一条线，总共有C(n,2)条线。</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 绘制连线
+  for (var i = 0; i &lt; dotsNum; i ++) {
+    for (var j = i + 1; j &lt; dotsNum; j ++) {
+      var tx = dotsArr[i].x - dotsArr[j].x,
+          ty = dotsArr[i].y - dotsArr[j].y,
+          // 三角形斜边长
+          s = Math.sqrt(Math.pow(tx, 2) + Math.pow(ty, 2));
+
+      if (s &lt; dotsDistance) {
+        ctx.beginPath();
+        ctx.moveTo(dotsArr[i].x, dotsArr[i].y);
+        ctx.lineTo(dotsArr[j].x, dotsArr[j].y);
+        ctx.strokeStyle = 'rgba(0,0,0,'+(dotsDistance-s)/dotsDistance+')';
+
+        ctx.strokeWidth = 1;
+        ctx.stroke();
+        ctx.closePath();
+      }
+    }
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>点与点之间连线</p> <p><img src="https://user-gold-cdn.xitu.io/2019/1/25/16884628fae6ad8e?w=1618&h=1088&f=png&s=1962457" alt></p> <p>限定点与点的连线距离（优化：根据点之间的距离添加连线颜色透明度）</p> <p><img src="https://user-gold-cdn.xitu.io/2019/1/25/1688462d88c2a92a?w=1638&h=1188&f=png&s=1984005" alt></p> <h4 id="_5、requestanimationframe"><a href="#_5、requestanimationframe" aria-hidden="true" class="header-anchor">#</a> 5、requestAnimationFrame</h4> <p>Canvas 画布的工作原理和显示器工作原理一样，都是通过不断的刷新绘制。浏览器的刷新是实时的，而 Canvas 的刷新是手动触发的，如果我们只想在 Canvas 上实现静态的效果，就没必不断刷新。</p> <p><code>requestAnimationFrame</code>是浏览器用于定时循环操作的一个接口，类似于setTimeout，主要用途是按<code>帧</code>对网页进行重绘。<code>requestAnimationFrame</code>不是自己指定回调函数运行的时间，而是跟着浏览器内建的刷新频率来执行回调。</p> <h6 id="优势："><a href="#优势：" aria-hidden="true" class="header-anchor">#</a> <strong>优势</strong>：</h6> <p>浏览器可以优化并行的动画动作，更合理的重新排列动作序列，并把能够合并的动作放在一个渲染周期内完成，从而呈现出更流畅的动画效果，一旦页面不处于浏览器的当前标签，就会自动停止刷新。</p> <h6 id="使用方式："><a href="#使用方式：" aria-hidden="true" class="header-anchor">#</a> <strong>使用方式</strong>：</h6> <blockquote><p>持续调用 requestAnimFrame</p> <p>清除动画调用 cancelAnimationFrame</p></blockquote> <h6 id="动效绘制大致路数"><a href="#动效绘制大致路数" aria-hidden="true" class="header-anchor">#</a> <strong>动效绘制大致路数</strong>:</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>var canvas = document.querySelector('canvas');
+var context = canvas.getContext('2d');
+
+// 画布渲染
+var render = function () {
+    // 清除画布
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    // 绘制(在canvas画布上绘制图形的代码)
+    draw();
+    // 继续渲染
+    requestAnimationFrame(render);
+};
+render();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>上面的<code>draw()</code>就是在 canvas 画布上绘制图形的代码，但是如果仅仅有上面代码还不够，如果是同一个位置不断刷新，我们看到的还是静止不动的效果，所以还需要一个运动变量。</p> <h6 id="运动坐标变量"><a href="#运动坐标变量" aria-hidden="true" class="header-anchor">#</a> <strong>运动坐标变量</strong>:</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>var canvas = document.querySelector('canvas');
+var context = canvas.getContext('2d');
+
+// 坐标变量
+var x = 0;
+// 绘制方法
+var draw = function () {
+    ball.x = x;
+};
+// 画布渲染
+var render = function () {
+    // 清除画布
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    // 位置变化
+    x++;
+    // 绘制
+    draw();
+    // 继续渲染
+    requestAnimationFrame(render);
+};
+
+render();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h4 id="_6、动起来的多点多线"><a href="#_6、动起来的多点多线" aria-hidden="true" class="header-anchor">#</a> 6、动起来的多点多线</h4> <p><strong>动的是点，画的是线</strong></p> <h6 id="给-dots-对象添加运动变量-sx-和-sy-两个值表示点在x轴和y轴的运动量-此处为在-2-2-之间运动。"><a href="#给-dots-对象添加运动变量-sx-和-sy-两个值表示点在x轴和y轴的运动量-此处为在-2-2-之间运动。" aria-hidden="true" class="header-anchor">#</a> 给 Dots 对象添加运动变量,sx 和 sy 两个值表示点在x轴和y轴的运动量,此处为在[-2, 2)之间运动。</h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>let Dots = function () {
+  // 画布
+  this.canvas;
+  this.ctx;
+
+  // 画点
+  this.x;
+  this.y;
+  this.r;
+
+  // 移动
+  // 随机确定点的移动速度与方向 速度值在 [-2, 2) 之间 提高数值可加快速度 
+  //（Math.random() 随机返回[0,1)的数）
+  this.sx = Math.random() * 4 - 2;
+  this.sy = Math.random() * 4 - 2;
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h6 id="添加更新点的方法update"><a href="#添加更新点的方法update" aria-hidden="true" class="header-anchor">#</a> 添加更新点的方法<code>update()</code></h6> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 更新点位置
+  update: function () {
+    this.x = this.x + this.sx;
+    this.y = this.y + this.sy;
+
+    // 点超出 canvas 范围时重新初始化
+    if (this.x &lt; 0 || this.x &gt; this.canvas.width) {
+      this.init(this.canvas);
+    }
+    if (this.y &lt; 0 || this.y &gt; this.canvas.height) {
+      this.init(this.canvas);
+    }
+
+    this.ctx.beginPath();
+    this.ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+    this.ctx.fillStyle = &quot;rgba(0,0,0,.6)&quot;;
+    this.ctx.fill();
+    this.ctx.closePath();
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h6 id="动画及连线"><a href="#动画及连线" aria-hidden="true" class="header-anchor">#</a> 动画及连线</h6> <p>兼容 requestAnimationFrame</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>  let requestAnimFrame = requestAnimationFrame || webkitRequestAnimationFrame || oRequestAnimationFrame || msRequestAnimationFrame;
+  requestAnimFrame(animateUpdate); // 兼容不同浏览器的 requestAnimationFrame
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>或者使用 setTimeout 向下兼容：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// requestAnimationFrame的向下兼容处理
+if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame = function(fn) {
+        setTimeout(fn, 17);
+    };
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>由于点的位置不断变换，因此需要将画线的操作放在动画内执行，点的位置 update 一次就执行一次连线。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>  function animateUpdate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空canvas中原有的内容
+
+    for (let i = 0; i &lt; dotsNum; i ++) {
+      dotsArr[i].update();
+    }
+
+    // 绘制连线
+    for (let i = 0; i &lt; dotsNum; i ++) {
+      for (let j = i + 1; j &lt; dotsNum; j ++) {
+        let tx = dotsArr[i].x - dotsArr[j].x,
+          ty = dotsArr[i].y - dotsArr[j].y,
+          // 三角形斜边长
+          s = Math.sqrt(Math.pow(tx, 2) + Math.pow(ty, 2));
+        if (s &lt; dotsDistance) {
+          ctx.beginPath();
+          ctx.moveTo(dotsArr[i].x, dotsArr[i].y);
+          ctx.lineTo(dotsArr[j].x, dotsArr[j].y);
+          ctx.strokeStyle = 'rgba(0,0,0,'+(dotsDistance-s)/dotsDistance+')';
+          ctx.strokeWidth = 1;
+          ctx.stroke();
+          ctx.closePath();
+        }
+      }
+    }
+    // 继续渲染
+    requestAnimFrame(animateUpdate);
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h4 id="类似的例子"><a href="#类似的例子" aria-hidden="true" class="header-anchor">#</a> 类似的例子</h4> <p>星空效果、下雨效果等</p> <h4 id="你可能不知道的点"><a href="#你可能不知道的点" aria-hidden="true" class="header-anchor">#</a> 你可能不知道的点</h4> <h5 id="_1、canvas-画的圆不是圆，是椭圆"><a href="#_1、canvas-画的圆不是圆，是椭圆" aria-hidden="true" class="header-anchor">#</a> 1、canvas 画的圆不是圆，是椭圆</h5> <p>不要在style里指定 Canvas 的宽度，Canvas 画布的尺寸的大小和显示的大小是有很大的区别的，在 canvas 里面设置的是才是 Canvas 本身的大小。</p> <blockquote><p>如果不给<code>&lt;canvas&gt;</code>设置 width、height 属性时，则默认 width 为 300、height 为 150, 单位都是 px。也可以使用 css 属性来设置宽高，但是如宽高属性和初始比例不一致，他会出现扭曲。所以，<strong>建议永远不要使用css属性来设置<code>&lt;canvas&gt;</code>的宽高。</strong></p></blockquote> <h5 id="_2、不要企图通过闭合现有路径来开始一条新路径"><a href="#_2、不要企图通过闭合现有路径来开始一条新路径" aria-hidden="true" class="header-anchor">#</a> 2、不要企图通过闭合现有路径来开始一条新路径</h5> <p><strong>画新元素前记得要 beginPath()</strong></p> <ul><li>不管用 moveTo 把画笔移动到哪里，只要不调用beginPath()，一直都是在画一条路径</li> <li>fillRect 与 strokeRect 这种直接画出独立区域的函数，也不会打断当前的path</li></ul></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/accumulate/css/bfc.html" class="prev">
+          BFC - 块级格式化上下文
+        </a></span> <span class="next"><a href="/accumulate/css/maodian.html">
+          简单的选项卡切换效果
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.42b9ba97.js" defer></script><script src="/assets/js/11.ada11291.js" defer></script>
+  </body>
+</html>

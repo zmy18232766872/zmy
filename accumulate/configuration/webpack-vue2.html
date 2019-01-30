@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack4 + vue2 | ZMY&#39;s Website</title>
+    <meta name="description" content="ZMY&#39;s Website">
+    <link rel="icon" href="/images/logo.jpeg">
+  <link rel="manifest" href="/images/logo.jpeg">
+  <link rel="apple-touch-icon" href="/images/logo.jpeg">
+    
+    <link rel="preload" href="/assets/css/0.styles.6ba01dbc.css" as="style"><link rel="preload" href="/assets/js/app.42b9ba97.js" as="script"><link rel="preload" href="/assets/js/7.48f237c6.js" as="script"><link rel="prefetch" href="/assets/js/10.6bcab56d.js"><link rel="prefetch" href="/assets/js/11.ada11291.js"><link rel="prefetch" href="/assets/js/12.8d727e1b.js"><link rel="prefetch" href="/assets/js/13.2468b28d.js"><link rel="prefetch" href="/assets/js/14.a642536a.js"><link rel="prefetch" href="/assets/js/15.9b6f175f.js"><link rel="prefetch" href="/assets/js/16.e358d100.js"><link rel="prefetch" href="/assets/js/2.14f91ed7.js"><link rel="prefetch" href="/assets/js/3.4c44146a.js"><link rel="prefetch" href="/assets/js/4.dc7041ef.js"><link rel="prefetch" href="/assets/js/5.96ce65d8.js"><link rel="prefetch" href="/assets/js/6.9183c1f3.js"><link rel="prefetch" href="/assets/js/8.9e176729.js"><link rel="prefetch" href="/assets/js/9.b9fd3a14.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.6ba01dbc.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">ZMY's Website</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/accumulate/" class="nav-link router-link-active">前端基础</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">算法题库</a></div><div class="nav-item"><a href="/aboutme/" class="nav-link">关于我</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/accumulate/" class="nav-link router-link-active">前端基础</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">算法题库</a></div><div class="nav-item"><a href="/aboutme/" class="nav-link">关于我</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>html</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>打包配置</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/accumulate/configuration/gulp.html" class="sidebar-link">Gulp 前端构建工具</a></li><li><a href="/accumulate/configuration/webpack.html" class="sidebar-link">webpack学习笔记</a></li><li><a href="/accumulate/configuration/webpack-vue2.html" class="active sidebar-link">webpack4 + vue2</a><ul class="sidebar-sub-headers"></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="webpack4-vue2"><a href="#webpack4-vue2" aria-hidden="true" class="header-anchor">#</a> webpack4 + vue2</h1> <h4 id="webpack4以上对webpack-和-webpack-cli-进行了拆分"><a href="#webpack4以上对webpack-和-webpack-cli-进行了拆分" aria-hidden="true" class="header-anchor">#</a> webpack4以上对webpack 和 webpack-cli 进行了拆分</h4> <p>需要同时安装webpack和webpack-cli，命令：</p> <blockquote><p>npm install webpack webpack-cli --save-dev</p></blockquote> <h4 id="webpack4新增了mode"><a href="#webpack4新增了mode" aria-hidden="true" class="header-anchor">#</a> webpack4新增了mode</h4> <p>可以在命令行中输入 <code>npx webpack --mode=production</code>,或者在webpack.config.js配置文件中进行配置：<code>mode:production</code>。</p> <ul><li>在mode模式下，会自动注入process.env.NODE_ENV变量，在不同的环境下执行不同的操作</li> <li>webpack4以下需要进行配置</li></ul> <p>可针对不同环境进行不同操作</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//判断是线上环境还是开发环境
+if(process.env.NODE_ENV === 'production'){
+    console.log('This is production mode!')
+} else {
+    console.log('This is development mode!')
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="配置webpack4"><a href="#配置webpack4" aria-hidden="true" class="header-anchor">#</a> 配置webpack4</h3> <h4 id="_1、安装依赖"><a href="#_1、安装依赖" aria-hidden="true" class="header-anchor">#</a> 1、安装依赖</h4> <blockquote><p>npm init</p></blockquote> <h4 id="_2、安装webpack-cli"><a href="#_2、安装webpack-cli" aria-hidden="true" class="header-anchor">#</a> 2、安装webpack-cli</h4> <blockquote><p>npm add webpack webpack-cli</p></blockquote> <p>添加webpack、webpack-cli。</p> <p><code>webpack4以上</code>对<code>webpack</code>和<code>webpack-cli</code>进行了拆分，所以需要同时安装webpack和webpack-cli。</p> <h4 id="_3、新建index-html"><a href="#_3、新建index-html" aria-hidden="true" class="header-anchor">#</a> 3、新建index.html</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;webpack v4&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;dist/main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h4 id="_4、新建src文件夹，在文件夹下创建index-js文件"><a href="#_4、新建src文件夹，在文件夹下创建index-js文件" aria-hidden="true" class="header-anchor">#</a> 4、新建src文件夹，在文件夹下创建index.js文件</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>console.log('hello webpack v4');
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="_5、打包"><a href="#_5、打包" aria-hidden="true" class="header-anchor">#</a> 5、打包</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>//终端执行
+webpack
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>在命令行中直接输入webpack执行的是<code>全局webpack</code>，在项目环境中执行可以使用<code>npx webpack</code> 或者在<code>package.json</code>中配置命令行</p> <h5 id="打包结果"><a href="#打包结果" aria-hidden="true" class="header-anchor">#</a> 打包结果</h5> <p><img src="https://user-gold-cdn.xitu.io/2018/8/23/16564b7dce1cea76?w=1142&h=542&f=png&s=128979" alt></p> <p>打包后文件夹中新增一个dist文件夹，包含main.js文件，此时的main.js是已经被打包压缩过的。但是终端会有一个WARNING，提示没有设置mode,将会以使用production：</p> <p><img src="https://user-gold-cdn.xitu.io/2018/8/23/16564c73e84c9e3f?w=1136&h=218&f=png&s=50274" alt></p> <p>下面就是配置mode。</p> <h4 id="_6、在package-json中配置mode"><a href="#_6、在package-json中配置mode" aria-hidden="true" class="header-anchor">#</a> 6、在package.json中配置mode</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+  &quot;name&quot;: &quot;&quot;,
+  &quot;version&quot;: &quot;&quot;,
+  &quot;dependencies&quot;: {
+    &quot;webpack&quot;: &quot;^4.17.1&quot;,
+    &quot;webpack-cli&quot;: &quot;^3.1.0&quot;
+  },
+  &quot;scripts&quot;:{
+    &quot;start&quot;:&quot;--mode development&quot;,
+    &quot;build&quot;: &quot;--mode production&quot;
+ 	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>其中start设置为开发模式，build为生产环境（压缩）</p> <h4 id="_7、再次打包"><a href="#_7、再次打包" aria-hidden="true" class="header-anchor">#</a> 7、再次打包</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>//终端
+npm start //开发模式
+npm build //生产环境
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h4 id="_8、配置webpack-dev-server"><a href="#_8、配置webpack-dev-server" aria-hidden="true" class="header-anchor">#</a> 8、配置webpack-dev-server</h4> <p>配置webpack-dev-server自动打开浏览器，终端执行下述命令，添加webpack-dev-server</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm add webpack-dev-server
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>修改index.html</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="https://user-gold-cdn.xitu.io/2018/8/23/16564d53ad0cb1f5?w=860&h=240&f=png&s=69056" alt></p> <p>修改package.json</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&quot;scripts&quot;: {
+    &quot;start&quot;: &quot;webpack-dev-server --mode development --open&quot;,
+    &quot;build&quot;: &quot;webpack --mode production&quot;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>再执行命令进行打包,此时发现浏览器自动打开：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h4 id="_9、添加vue"><a href="#_9、添加vue" aria-hidden="true" class="header-anchor">#</a> 9、添加vue</h4> <p>添加vue依赖</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm add vue
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="https://user-gold-cdn.xitu.io/2018/8/23/16564d71296a766b?w=820&h=242&f=png&s=61479" alt></p> <p>在src下面新建文件夹pages,在pages里面新建app.vue文件。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;section class=&quot;main&quot;&gt;
+    &lt;p&gt;Here is {{name}}&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+ 
+&lt;script&gt;
+export default {
+  data () {
+    return {
+        name:&quot;vue + webpack&quot;
+    }
+  }
+}
+&lt;/script&gt;
+ 
+&lt;style&gt;
+.main &gt; p{
+  color: #000;
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>修改index.js</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue'
+import App from './pages/app.vue'
+ 
+new Vue({
+  el:&quot;#root&quot;,
+  render:h=&gt;h(App)
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>执行命令：<code>npm start</code>
+会发现有错误：</p> <h5 id="错误-1"><a href="#错误-1" aria-hidden="true" class="header-anchor">#</a> 错误 1</h5> <p><img src="https://user-gold-cdn.xitu.io/2018/8/23/16564dda66a5c042?w=990&h=332&f=png&s=69793" alt></p> <p>提示模块解析失败，需要一个加载程序来处理这个文件类型。</p> <h5 id="解决-1"><a href="#解决-1" aria-hidden="true" class="header-anchor">#</a> 解决 1</h5> <ul><li>安装vue-loader</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm add vue-loader
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>新建一个webpack.config.js文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>module.exports = {
+    module:{
+        rules:[
+            {test:/\.vue$/,use:'vue-loader'}
+        ]
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>vue-loader在15之后需要在webpack.config.js中当插件引入,完整的如下(<code>注意</code>：css这个必须引入，不然在.vue文件使用样式会报错)</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+ 
+module.exports = {
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      // 它会应用到普通的 `.js` 文件
+      // 以及 `.vue` 文件中的 `&lt;script&gt;` 块
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      },
+      // 它会应用到普通的 `.css` 文件
+      // 以及 `.vue` 文件中的 `&lt;style&gt;` 块
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  plugins: [
+    // 请确保引入这个插件来施展魔法
+    new VueLoaderPlugin()
+  ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><p>再次执行命令：<code>npm start</code>，发现还是报错</p> <h5 id="错误-2"><a href="#错误-2" aria-hidden="true" class="header-anchor">#</a> 错误 2</h5> <p><img src="https://user-gold-cdn.xitu.io/2018/8/23/165658a60e4330bc?w=1140&h=352&f=png&s=99061" alt></p> <p>提示babel-loader找不到，因此安装babel-loader</p> <h5 id="解决-2"><a href="#解决-2" aria-hidden="true" class="header-anchor">#</a> 解决 2</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm add babel-loader
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>其余的问题也是，提示哪个module不存在就安装哪个，命令是：</p> <blockquote><p>npm add ...</p></blockquote> <h4 id="错误-3"><a href="#错误-3" aria-hidden="true" class="header-anchor">#</a> 错误 3</h4> <p><img src="https://user-gold-cdn.xitu.io/2018/8/23/165659076bf2cdbc?w=1128&h=266&f=png&s=58674" alt>
+提示css-loader不存在</p> <h5 id="解决-3"><a href="#解决-3" aria-hidden="true" class="header-anchor">#</a> 解决 3</h5> <blockquote><p>npm add css-loader</p></blockquote> <p>执行了一系列add 或者install操作后，再执行：npm start，此时页面显示如下：
+<img src="https://user-gold-cdn.xitu.io/2018/8/23/165659f72c8f9cb9?w=878&h=374&f=png&s=37015" alt></p> <p>此时，webpack4+vue2项目搭建完成，但是还有一些需要优化的点。</p> <h4 id="从js中分离css"><a href="#从js中分离css" aria-hidden="true" class="header-anchor">#</a> 从js中分离css</h4> <p><img src="https://user-gold-cdn.xitu.io/2018/8/23/16565a3d689bfe71?w=1302&h=638&f=png&s=130939" alt></p> <p>查看网页代码发现样式被塞进了head内，我们如果要将css代码分离出来需要安装extract-text-webpack-plugin@next插件</p> <blockquote><p>npm add extract-text-webpack-plugin@next</p></blockquote> <p>安装后需要在webpack.config.js中进行配置：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//引入插件
+const ExtractTextWebapckPlugin = require('extract-text-webpack-plugin'); 
+
+module.exports = {
+    module:{
+        rules:[
+            { 
+                test: /\.vue$/, 
+                loader: 'vue-loader',
+                options: { 
+                    loaders: { 
+                        css: ExtractTextWebapckPlugin.extract({ use: 'css-loader' }) 
+                    }
+                }
+            }
+        ]
+    },
+    plugins:[
+        new ExtractTextWebapckPlugin('style.css')
+    ]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>执行命令：</p> <blockquote><p>npm run build
+在dist文件夹下出现main.js和style.css文件</p></blockquote> <h4 id="处理图片"><a href="#处理图片" aria-hidden="true" class="header-anchor">#</a> 处理图片</h4> <p>新建一个img文件夹来存放图片</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;section class=&quot;main&quot;&gt;
+    &lt;p&gt;Here is {{name}}&lt;/p&gt;
+    &lt;img src=&quot;../img/1.jpg&quot; alt=&quot;&quot;&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+ 
+&lt;script&gt;
+export default {
+  data () {
+    return {
+        name:&quot;vue + webpack&quot;
+    }
+  }
+}
+&lt;/script&gt;
+ 
+&lt;style&gt;
+.main &gt; p{
+  color: #000;
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>当执行 npm start 后，发现终端报错：</p> <p><img src="https://user-gold-cdn.xitu.io/2019/1/28/168927b01c694fb9?w=1680&h=506&f=png&s=643880" alt></p> <p>不能处理图片，因此安装处理图片的相关loader。</p> <blockquote><p>npm add file-loader url-loader</p></blockquote> <p>其次修改 webpack.config.js 配置文件：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>...
+rule:[
+    ...
+    { 
+        test: /\.(png|jpg|gif)$/, 
+        use: [{ loader: 'url-loader',options: { limit: 8192 } }] 
+    }
+    ...
+]
+...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>执行npm start后也会将图片文件进行打包：</p> <p><img src="https://user-gold-cdn.xitu.io/2019/1/28/168927bfd179ba99?w=1682&h=550&f=png&s=649929" alt></p> <h4 id="处理es6、es7语法"><a href="#处理es6、es7语法" aria-hidden="true" class="header-anchor">#</a> 处理ES6、ES7语法</h4> <p>安装相关依赖包</p> <blockquote><p>npm install babel-core babel-loader babel-preset-env babel-preset-latest --save-dev</p></blockquote> <p>并在webpack.config.js文件中进行配置：</p> <p><img src="https://user-gold-cdn.xitu.io/2019/1/28/168927c9dfbe4e04?w=1180&h=576&f=png&s=274031" alt></p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/accumulate/configuration/webpack.html" class="prev">
+          webpack学习笔记
+        </a></span> <!----></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.42b9ba97.js" defer></script><script src="/assets/js/7.48f237c6.js" defer></script>
+  </body>
+</html>
